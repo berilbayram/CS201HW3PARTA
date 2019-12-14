@@ -39,6 +39,24 @@ BookCollection:: BookCollection( const BookCollection &bcToCopy){
     }
 }
 
+void BookCollection::operator=(const class BookCollection & right) {
+    genreCount = right.genreCount;
+    if (right.head == nullptr){
+        head = nullptr;
+    } else {
+        head = new GenreNode;
+        head->g = right.head->g;
+        GenreNode* newPtr = head;
+
+        for(GenreNode* bcToCopyGenrePtr = right.head->next; bcToCopyGenrePtr != nullptr; bcToCopyGenrePtr = bcToCopyGenrePtr->next){
+            newPtr->next = new GenreNode;
+            newPtr = newPtr->next;
+            newPtr->g = bcToCopyGenrePtr->g;
+        }
+        newPtr->next = nullptr;
+    }
+}
+
 string BookCollection::getName() const {
     return name;
 }
@@ -89,7 +107,7 @@ bool BookCollection::removeGenre(const std::string genreName) {
         } else {
             for (GenreNode *current = head; current != nullptr; current = current->next) {
                 if (current->g.getGenreName() == genreName) {
-                    return index;
+                    break;
                 }
                 index++;
             }
