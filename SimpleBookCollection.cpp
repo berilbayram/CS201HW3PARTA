@@ -23,6 +23,7 @@ BookCollection::~BookCollection(){
 
 BookCollection:: BookCollection( const BookCollection &bcToCopy){
     genreCount = bcToCopy.genreCount;
+    this->name = bcToCopy.name;
     if (bcToCopy.head == nullptr){
         head = nullptr;
     } else {
@@ -41,6 +42,7 @@ BookCollection:: BookCollection( const BookCollection &bcToCopy){
 
 void BookCollection::operator=(const class BookCollection & right) {
     genreCount = right.genreCount;
+    this->name = right.name;
     if (right.head == nullptr){
         head = nullptr;
     } else {

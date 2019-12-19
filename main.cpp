@@ -11,10 +11,12 @@ int main() {
     collection.setName("test");
     collection.addGenre("Rock");
     collection.addGenre("Metal");
+    collection.removeGenre("Metal");
     collection.addGenre("rock");
     collection.addGenre("Pop");
     collection.removeGenre("Pop");
-    BookCollection collection1 = collection;
+    BookCollection collection1 = BookCollection();
+    collection1 = collection;
     collection1.addGenre("Beril");
     cout << "ch1" << endl;
     collection.displayGenres();
